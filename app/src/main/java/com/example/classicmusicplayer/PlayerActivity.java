@@ -31,8 +31,9 @@ import java.net.URI;
 import java.util.ArrayList;
 
 import static com.example.classicmusicplayer.MainActivity.musicFiles;
+import static com.example.classicmusicplayer.MainActivity.shuffleBoolean;
 
-public class PlayerActivity extends AppCompatActivity {
+public class PlayerActivity extends AppCompatActivity implements MediaPlayer.OnCompletionListener {
 
     TextView song_name, artist_name, duration_played, duration_total;
     ImageView cover_art, nextBtn, prevBtn, backBtn, shuffleBtn, repeatBtn;
@@ -53,6 +54,7 @@ public class PlayerActivity extends AppCompatActivity {
         getIntentMethod();
         song_name.setText(listSongs.get(position).getTitle());
         artist_name.setText(listSongs.get(position).getArtist());
+        mediaPlayer.setOnCompletionListener(this);
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -82,6 +84,20 @@ public class PlayerActivity extends AppCompatActivity {
                     duration_played.setText(formattedTime(mCurrentPosition));
                 }
                 handler.postDelayed(this, 1000);
+            }
+        });
+        shuffleBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (shuffleBoolean)
+                {
+                    shuffleBoolean = false;
+                    shuffleBtn.setImageResource(R.drawable.ic_shuffle_on);
+                }
+                else
+                {
+
+                }
             }
         });
     }
@@ -136,7 +152,8 @@ public class PlayerActivity extends AppCompatActivity {
                     handler.postDelayed(this, 1000);
                 }
             });
-            playPauseBtn.setImageResource(R.drawable.ic_pause);
+            mediaPlayer.setOnCompletionListener(this);
+            playPauseBtn.setBackgroundResource(R.drawable.ic_pause);
             mediaPlayer.start();
         }
         else
@@ -162,7 +179,8 @@ public class PlayerActivity extends AppCompatActivity {
                     handler.postDelayed(this, 1000);
                 }
             });
-            playPauseBtn.setImageResource(R.drawable.ic_play);
+            mediaPlayer.setOnCompletionListener(this);
+            playPauseBtn.setBackgroundResource(R.drawable.ic_play);
         }
     }
 
@@ -208,7 +226,8 @@ public class PlayerActivity extends AppCompatActivity {
                     handler.postDelayed(this, 1000);
                 }
             });
-            playPauseBtn.setImageResource(R.drawable.ic_pause);
+            mediaPlayer.setOnCompletionListener(this);
+            playPauseBtn.setBackgroundResource(R.drawable.ic_pause);
             mediaPlayer.start();
         }
         else
@@ -234,7 +253,8 @@ public class PlayerActivity extends AppCompatActivity {
                     handler.postDelayed(this, 1000);
                 }
             });
-            playPauseBtn.setImageResource(R.drawable.ic_play);
+            mediaPlayer.setOnCompletionListener(this);
+            playPauseBtn.setBackgroundResource(R.drawable.ic_play);
         }
     }
 
@@ -369,13 +389,15 @@ public class PlayerActivity extends AppCompatActivity {
                 public void onGenerated(@Nullable Palette palette) {
                     Palette.Swatch swatch = palette.getDominantSwatch();
 
+                    ImageView gradient = findViewById(R.id.imageViewGredient);
+                    RelativeLayout mContainer = findViewById(R.id.mContainer);
+                    gradient.setBackgroundResource(R.drawable.gredient_bg);
+                    mContainer.setBackgroundResource(R.drawable.main_bg);
+                    GradientDrawable gradientDrawable;
+
                     if(swatch != null)
                     {
-                        ImageView gradient = findViewById(R.id.imageViewGredient);
-                        RelativeLayout mContainer = findViewById(R.id.mContainer);
-                        gradient.setBackgroundResource(R.drawable.gredient_bg);
-                        mContainer.setBackgroundResource(R.drawable.main_bg);
-                        GradientDrawable gradientDrawable = new GradientDrawable(GradientDrawable.Orientation.BOTTOM_TOP,
+                        gradientDrawable = new GradientDrawable(GradientDrawable.Orientation.BOTTOM_TOP,
                                 new int[]{swatch.getRgb(), 0x00000000});
                         gradient.setBackground(gradientDrawable);
                         GradientDrawable gradientDrawableBg = new GradientDrawable(GradientDrawable.Orientation.BOTTOM_TOP,
@@ -386,11 +408,7 @@ public class PlayerActivity extends AppCompatActivity {
                     }
                     else
                     {
-                        ImageView gradient = findViewById(R.id.imageViewGredient);
-                        RelativeLayout mContainer = findViewById(R.id.mContainer);
-                        gradient.setBackgroundResource(R.drawable.gredient_bg);
-                        mContainer.setBackgroundResource(R.drawable.main_bg);
-                        GradientDrawable gradientDrawable = new GradientDrawable(GradientDrawable.Orientation.BOTTOM_TOP,
+                        gradientDrawable = new GradientDrawable(GradientDrawable.Orientation.BOTTOM_TOP,
                                 new int[]{0xff000000, 0x00000000});
                         gradient.setBackground(gradientDrawable);
                         GradientDrawable gradientDrawableBg = new GradientDrawable(GradientDrawable.Orientation.BOTTOM_TOP,
@@ -454,5 +472,16 @@ public class PlayerActivity extends AppCompatActivity {
             }
         });
         imageView.startAnimation(animOut);
+    }
+
+    @Override
+    public void onCompletion(MediaPlayer mp) {
+        nextBtnClicked();
+        if (mediaPlayer != null)
+        {
+            mediaPlayer = MediaPlayer.create(getApplicationContext(), uri);
+            mediaPlayer.start();
+            mediaPlayer.setOnCompletionListener(this);
+        }
     }
 }
