@@ -11,7 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ClassicMusicPlayer">
-        <activity android:name=".PlayerActivity"></activity>
+        <activity
+            android:name=".AlbumDetails"
+            android:exported="false" />
+        <activity android:name=".PlayerActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

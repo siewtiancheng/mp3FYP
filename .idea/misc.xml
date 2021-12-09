@@ -11,7 +11,11 @@
         <entry key="..\:/download/TCPJ214 Project/Final Year Project/ClassicMusicPlayer/app/src/main/res/drawable/ic_shuffle_on.xml" value="0.2564814814814815" />
         <entry key="..\:/download/TCPJ214 Project/Final Year Project/ClassicMusicPlayer/app/src/main/res/drawable/ic_skip_next.xml" value="0.2564814814814815" />
         <entry key="..\:/download/TCPJ214 Project/Final Year Project/ClassicMusicPlayer/app/src/main/res/drawable/ic_skip_previous.xml" value="0.2564814814814815" />
+        <entry key="..\:/download/TCPJ214 Project/Final Year Project/ClassicMusicPlayer/app/src/main/res/layout/activity_album_details.xml" value="0.23867753623188406" />
         <entry key="..\:/download/TCPJ214 Project/Final Year Project/ClassicMusicPlayer/app/src/main/res/layout/activity_player.xml" value="0.12335359675785208" />
+        <entry key="..\:/download/TCPJ214 Project/Final Year Project/ClassicMusicPlayer/app/src/main/res/layout/album_item.xml" value="0.264" />
+        <entry key="..\:/download/TCPJ214 Project/Final Year Project/ClassicMusicPlayer/app/src/main/res/layout/fragment_album.xml" value="0.23867753623188406" />
+        <entry key="..\:/download/TCPJ214 Project/Final Year Project/ClassicMusicPlayer/app/src/main/res/layout/fragment_songs.xml" value="0.12335359675785208" />
         <entry key="..\:/download/TCPJ214 Project/Final Year Project/ClassicMusicPlayer/app/src/main/res/layout/music_items.xml" value="0.264" />
         <entry key="..\:/download/TCPJ214 Project/Final Year Project/ClassicMusicPlayer/app/src/main/res/menu/popup.xml" value="0.25364583333333335" />
       </map>
