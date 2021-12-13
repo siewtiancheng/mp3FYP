@@ -31,9 +31,11 @@ import java.net.URI;
 import java.util.ArrayList;
 import java.util.Random;
 
+import static com.example.classicmusicplayer.AlbumDetailsAdapter.albumFiles;
 import static com.example.classicmusicplayer.MainActivity.musicFiles;
 import static com.example.classicmusicplayer.MainActivity.repeatBoolean;
 import static com.example.classicmusicplayer.MainActivity.shuffleBoolean;
+import static com.example.classicmusicplayer.MusicAdapter.mFiles;
 
 public class PlayerActivity extends AppCompatActivity implements MediaPlayer.OnCompletionListener {
 
@@ -386,6 +388,15 @@ public class PlayerActivity extends AppCompatActivity implements MediaPlayer.OnC
 
     private void getIntentMethod() {
         position = getIntent().getIntExtra("position", -1);
+        String sender = getIntent().getStringExtra("sender");
+        if (sender != null && sender.equals("albumDetails"))
+        {
+            listSongs = albumFiles;
+        }
+        else
+        {
+            listSongs = mFiles;
+        }
         listSongs = musicFiles;
 
         if (listSongs != null)

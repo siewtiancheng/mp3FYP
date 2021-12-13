@@ -3,6 +3,7 @@ package com.example.classicmusicplayer;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -19,18 +20,22 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Locale;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
 
     public static final int REQUEST_CODE = 1;
     static ArrayList<MusicFile> musicFiles;
     static boolean shuffleBoolean = false, repeatBoolean = false;
+    static ArrayList<MusicFile> albums = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -123,6 +128,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static ArrayList<MusicFile> getAllAudio(Context context)
     {
+        ArrayList<String> duplicate = new ArrayList<>();
         ArrayList<MusicFile> tempAudioList = new ArrayList<>();
         Uri uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
         String[] projection = {
@@ -150,9 +156,44 @@ public class MainActivity extends AppCompatActivity {
                 // take log.e for check
                 Log.e("Path : " + path, "Album : " + album);
                 tempAudioList.add(musicFile);
+
+                if (duplicate.contains(album))
+                {
+                    albums.add(musicFile);
+                    duplicate.add(album);
+                }
             }
             cursor.close();
         }
         return tempAudioList;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.search, menu);
+        MenuItem menuItem = menu.findItem(R.id.search_option);
+        SearchView searchView = (SearchView) menuItem.getActionView();
+        searchView.setOnQueryTextListener(this);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        String userInput = newText.toLowerCase();
+        ArrayList<MusicFile> myFiles = new ArrayList<>();
+        for (MusicFile song : musicFiles)
+        {
+            if (song.getTitle().toLowerCase().contains(userInput))
+            {
+                myFiles.add(song);
+            }
+        }
+        SongsFragment.musicAdapter.updateList(myFiles);
+        return true;
     }
 }
