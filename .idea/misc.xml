@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/download/TCPJ214 Project/Final Year Project/ClassicMusicPlayer/app/src/main/res/drawable/gredient_bg.xml" value="0.23425925925925925" />
         <entry key="..\:/download/TCPJ214 Project/Final Year Project/ClassicMusicPlayer/app/src/main/res/drawable/ic_chevron_left.xml" value="0.2564814814814815" />
         <entry key="..\:/download/TCPJ214 Project/Final Year Project/ClassicMusicPlayer/app/src/main/res/drawable/ic_menu.xml" value="0.2564814814814815" />
         <entry key="..\:/download/TCPJ214 Project/Final Year Project/ClassicMusicPlayer/app/src/main/res/drawable/ic_pause.xml" value="0.2564814814814815" />
@@ -13,7 +14,7 @@
         <entry key="..\:/download/TCPJ214 Project/Final Year Project/ClassicMusicPlayer/app/src/main/res/drawable/ic_skip_previous.xml" value="0.2564814814814815" />
         <entry key="..\:/download/TCPJ214 Project/Final Year Project/ClassicMusicPlayer/app/src/main/res/drawable/tab_indicator.xml" value="0.24814814814814815" />
         <entry key="..\:/download/TCPJ214 Project/Final Year Project/ClassicMusicPlayer/app/src/main/res/layout/activity_album_details.xml" value="0.23867753623188406" />
-        <entry key="..\:/download/TCPJ214 Project/Final Year Project/ClassicMusicPlayer/app/src/main/res/layout/activity_player.xml" value="0.12335359675785208" />
+        <entry key="..\:/download/TCPJ214 Project/Final Year Project/ClassicMusicPlayer/app/src/main/res/layout/activity_player.xml" value="0.4" />
         <entry key="..\:/download/TCPJ214 Project/Final Year Project/ClassicMusicPlayer/app/src/main/res/layout/album_item.xml" value="0.264" />
         <entry key="..\:/download/TCPJ214 Project/Final Year Project/ClassicMusicPlayer/app/src/main/res/layout/fragment_album.xml" value="0.23867753623188406" />
         <entry key="..\:/download/TCPJ214 Project/Final Year Project/ClassicMusicPlayer/app/src/main/res/layout/fragment_songs.xml" value="0.12335359675785208" />

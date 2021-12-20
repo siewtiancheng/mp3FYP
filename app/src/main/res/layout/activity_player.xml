@@ -15,14 +15,14 @@
         android:id="@+id/layout_top_btn"
         android:background="@drawable/gredient_bg"
         android:layout_alignParentTop="true">
-        
+
         <ImageView
+            android:id="@+id/back_btn"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:id="@+id/back_btn"
-            android:src="@drawable/ic_chevron_left"
             android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"/>
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_chevron_left" />
 
         <TextView
             android:layout_width="match_parent"
@@ -67,34 +67,43 @@
 
     </RelativeLayout>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="This is the song Name"
-            android:id="@+id/song_name"
-            android:layout_below="@+id/card"
-            android:textColor="@color/peru"
-            android:gravity="center_horizontal"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            android:singleLine="true"
-            android:ellipsize="end"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"/>
+    <TextView
+        android:id="@+id/song_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/card"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="32dp"
+        android:ellipsize="end"
+        android:gravity="center_horizontal"
+        android:singleLine="true"
+        android:text="This is the song Name"
+        android:textColor="@color/peru"
+        android:textSize="22sp"
+        android:textStyle="bold" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="This is the song Artist"
-            android:id="@+id/song_artist"
-            android:layout_below="@+id/song_name"
-            android:textColor="@color/peru"
-            android:gravity="center_horizontal"
-            android:textSize="18sp"
-            android:singleLine="true"
-            android:ellipsize="end"
-            android:layout_marginStart="40dp"
-            android:layout_marginEnd="40dp"/>
+    <TextView
+        android:id="@+id/song_artist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/song_name"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:ellipsize="end"
+        android:gravity="center_horizontal"
+        android:singleLine="true"
+        android:text="This is the song Artist"
+        android:textColor="@color/peru"
+        android:textSize="18sp" />
+
+    <com.chibde.visualizer.LineBarVisualizer
+        android:id="@+id/visualizerLineBar"
+        android:layout_width="match_parent"
+        android:layout_height="14dp"
+        android:layout_alignTop="@+id/seek_bar_layout"
+        android:layout_marginTop="5dp"
+        android:layout_alignBottom="@+id/song_artist" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -125,14 +134,14 @@
             android:layout_marginEnd="16dp"/>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/play_pause"
+            android:onClick = "lineBarVisualization"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/play_pause"
-            android:src="@drawable/ic_play"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
+            android:layout_centerInParent="true"
+            android:clickable="true"
             android:focusable="true"
-            android:clickable="true"/>
+            android:src="@drawable/ic_play" />
 
         <ImageView
             android:layout_width="35dp"
@@ -154,37 +163,37 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/seek_bar_layout"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_above="@+id/relative_layout_for_bottom"
-        android:layout_marginBottom="15dp"
-        android:id="@+id/seek_bar_layout">
+        android:layout_marginBottom="15dp">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="1:28"
             android:id="@+id/durationPlayed"
-            android:textColor="@color/peru"
-            android:layout_marginStart="10dp"
-            android:layout_alignParentStart="true"/>
-
-        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="4:28"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="10dp"
+            android:text="1:28"
+            android:textColor="@color/peru" />
+
+        <TextView
             android:id="@+id/durationTotal"
-            android:textColor="@color/peru"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
             android:layout_marginEnd="10dp"
-            android:layout_alignParentEnd="true"/>
+            android:text="4:28"
+            android:textColor="@color/peru" />
 
         <SeekBar
+            android:id="@+id/seekBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/seekBar"
+            android:layout_alignParentBottom="true"
             android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_alignParentBottom="true"/>
+            android:layout_marginEnd="20dp" />
 
     </RelativeLayout>
 

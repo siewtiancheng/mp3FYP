@@ -2,6 +2,7 @@ package com.example.classicmusicplayer;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.palette.graphics.Palette;
 
 import android.content.Context;
@@ -25,6 +26,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.chibde.visualizer.LineBarVisualizer;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.net.URI;
@@ -351,6 +353,7 @@ public class PlayerActivity extends AppCompatActivity implements MediaPlayer.OnC
         else
         {
             playPauseBtn.setImageResource(R.drawable.ic_pause);
+            mediaPlayer = MediaPlayer.create( this,  R.layout.fragment_songs);
             mediaPlayer.start();
             seekBar.setMax(mediaPlayer.getDuration() / 1000);
             PlayerActivity.this.runOnUiThread(new Runnable() {
@@ -546,5 +549,21 @@ public class PlayerActivity extends AppCompatActivity implements MediaPlayer.OnC
             mediaPlayer.start();
             mediaPlayer.setOnCompletionListener(this);
         }
+    }
+
+    public void lineBarVisualization(View view) {
+        LineBarVisualizer lineBarVisualizer = findViewById(R.id.visualizerLineBar);
+        mediaPlayer = MediaPlayer.create( this,  R.layout.fragment_songs);
+
+        lineBarVisualizer.setVisibility(View.VISIBLE);
+
+        // setting the custom color to the line.
+        lineBarVisualizer.setColor(ContextCompat.getColor(this, R.color.myColor6));
+
+        // define the custom number of bars we want in the visualizer between (10 - 256).
+        lineBarVisualizer.setDensity(60);
+
+        // Setting the media player to the visualizer.
+        lineBarVisualizer.setPlayer(mediaPlayer.getAudioSessionId());
     }
 }

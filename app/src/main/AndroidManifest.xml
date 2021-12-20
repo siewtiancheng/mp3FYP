@@ -3,7 +3,8 @@
     package="com.example.classicmusicplayer">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
+    <!-- adding record audio  permission -->
+    <uses-permission android:name = "android.permission.RECORD_AUDIO"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -14,7 +15,8 @@
         <activity
             android:name=".AlbumDetails"
             android:exported="false" />
-        <activity android:name=".PlayerActivity" />
+        <activity android:name=".PlayerActivity"
+            android:theme="@style/Theme.ClassicMusicPlayer.NoActionBar"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
